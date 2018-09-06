@@ -15,8 +15,11 @@ class ShortenedUrl < ApplicationRecord
   end
 
   def self.create(long_url, user_object)
-
+  ShortenedUrl.create!(
+  submitter_id: user.id,
+  long_url: long_url,
+  short_url: ShortenedUrl.random_code
   end
-  add_index :shortened_urls, :user_id 
+  add_index :shortened_urls, :user_id
 
 end
